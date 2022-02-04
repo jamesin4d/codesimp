@@ -1,0 +1,139 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/code_simp/dock_panel.gd" type="Script" id=1]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.5, 1 )
+colors = PoolColorArray( 1, 0, 0, 1, 0.992188, 1, 0, 1, 0, 1, 0.203125, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+width = 128
+
+[node name="FUN" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 0, 100 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="XP_container" type="Control" parent="VBoxContainer"]
+margin_right = 600.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 24 )
+
+[node name="XP" type="Label" parent="VBoxContainer/XP_container"]
+text = "Monotonous task progression"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="XP_count" type="Label" parent="VBoxContainer/XP_container"]
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+text = "0/100"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="level" type="Label" parent="VBoxContainer/XP_container"]
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+text = "REPITITION NUMBER 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress" type="TextureProgress" parent="VBoxContainer"]
+margin_top = 28.0
+margin_right = 600.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 12 )
+value = 100.0
+texture_progress = SubResource( 2 )
+nine_patch_stretch = true
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+margin_top = 44.0
+margin_right = 600.0
+margin_bottom = 48.0
+
+[node name="GridContainer" type="GridContainer" parent="."]
+margin_top = 50.0
+margin_right = 752.0
+margin_bottom = 122.0
+columns = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="GridContainer"]
+margin_top = 13.0
+margin_right = 94.0
+margin_bottom = 27.0
+text = "Coding effects:"
+
+[node name="type" type="CheckButton" parent="GridContainer"]
+margin_left = 98.0
+margin_right = 217.0
+margin_bottom = 40.0
+hint_tooltip = "code for the simp..."
+text = "typing"
+
+[node name="delete" type="CheckButton" parent="GridContainer"]
+margin_left = 221.0
+margin_right = 353.0
+margin_bottom = 40.0
+hint_tooltip = "deletion effects"
+text = "deleting"
+
+[node name="lvl_up" type="CheckButton" parent="GridContainer"]
+margin_left = 357.0
+margin_right = 487.0
+margin_bottom = 40.0
+hint_tooltip = "as pointless as points"
+text = "leveling"
+
+[node name="perfect_line" type="CheckButton" parent="GridContainer"]
+margin_left = 491.0
+margin_right = 599.0
+margin_bottom = 40.0
+hint_tooltip = "type a perfect line"
+text = "line "
+
+[node name="pet" type="CheckButton" parent="GridContainer"]
+margin_left = 603.0
+margin_right = 750.0
+margin_bottom = 40.0
+hint_tooltip = "A code-simp, right-click to trap in place, middle-click to release"
+text = "code simp"
+
+[node name="GridContainer2" type="GridContainer" parent="."]
+margin_left = 754.0
+margin_top = 50.0
+margin_right = 882.0
+margin_bottom = 114.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSeparator" type="VSeparator" parent="GridContainer2"]
+margin_right = 4.0
+margin_bottom = 3.0
+
+[connection signal="pressed" from="GridContainer/type" to="." method="update_settings"]
+[connection signal="pressed" from="GridContainer/delete" to="." method="update_settings"]
+[connection signal="pressed" from="GridContainer/lvl_up" to="." method="update_settings"]
+[connection signal="pressed" from="GridContainer/perfect_line" to="." method="update_settings"]
+[connection signal="pressed" from="GridContainer/pet" to="." method="_on_pet_pressed"]
