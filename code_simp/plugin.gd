@@ -2,11 +2,11 @@ tool
 extends EditorPlugin
 
 var text_editors = []
-const type_effect = preload("res://addons/fun_coding/effects/type_effect.tscn")
-const lvl_up = preload("res://addons/fun_coding/effects/lvl_up.tscn")
-const delete_effect = preload("res://addons/fun_coding/effects/delete.tscn")
-const perfect_line = preload("res://addons/fun_coding/effects/perfect_line.tscn")
-const code_simp = preload("res://addons/fun_coding/effects/pet.tscn")
+const type_effect = preload("res://addons/code_simp/effects/type_effect.tscn")
+const lvl_up = preload("res://addons/code_simp/effects/lvl_up.tscn")
+const delete_effect = preload("res://addons/code_simp/effects/delete.tscn")
+const perfect_line = preload("res://addons/code_simp/effects/perfect_line.tscn")
+const code_simp = preload("res://addons/code_simp/effects/pet.tscn")
 var simp:Control
 var dock:Control
 var last_key = "a"
@@ -55,7 +55,7 @@ func _enter_tree():
 		push_error("could not initialize plugin.")
 		return
 	
-	dock = preload("res://addons/fun_coding/dock_panel.tscn").instance()
+	dock = preload("res://addons/code_simp/dock_panel.tscn").instance()
 	dock.plugin = self
 	add_control_to_bottom_panel(dock, "MagicSimp")
 	dock.xp_change(xp, max_xp, lvl)
